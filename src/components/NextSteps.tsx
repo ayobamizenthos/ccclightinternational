@@ -268,7 +268,7 @@ const NextSteps = () => {
               src={imoleExterior} 
               alt="CCC Light International Parish Headquarters" 
               className="w-full h-full object-cover" 
-            />
+            / loading="lazy" decoding="async">
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
             
             {/* Badge on image */}

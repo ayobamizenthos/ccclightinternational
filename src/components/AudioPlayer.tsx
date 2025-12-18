@@ -198,7 +198,7 @@ const AudioPlayer = ({ isOpen, onClose }: AudioPlayerProps) => {
                   alt="Lati Ona Jinjin"
                   className="w-14 h-14 rounded-lg object-cover relative z-10"
                   style={{ boxShadow: '0 6px 20px rgba(0,0,0,0.4)' }}
-                />
+                / loading="lazy" decoding="async">
               </motion.div>
 
               {/* Track info */}

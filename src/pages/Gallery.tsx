@@ -159,7 +159,7 @@ const GalleryCard = ({
         src={item.src} 
         alt={item.title}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
+      / loading="lazy" decoding="async">
 
       {/* Overlay */}
       <div 
@@ -300,7 +300,7 @@ const Lightbox = ({
                 src={item.src} 
                 alt={item.title}
                 className="w-full h-full object-cover"
-              />
+              / loading="lazy" decoding="async">
               <a
                 href={item.videoUrl}
                 target="_blank"
@@ -325,7 +325,7 @@ const Lightbox = ({
               src={item.src} 
               alt={item.title}
               className="w-full h-full object-contain max-h-[70vh]"
-            />
+            / loading="lazy" decoding="async">
           )}
         </div>
 

@@ -374,7 +374,7 @@ const PremiumLightbox = memo(({
                         alt={img.alt} 
                         className="w-full h-full object-cover"
                         draggable={false}
-                      />
+                      / loading="lazy" decoding="async">
                     </div>
                     {index === currentIndex && (
                       <motion.div

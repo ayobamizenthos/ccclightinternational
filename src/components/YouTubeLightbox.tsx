@@ -179,7 +179,7 @@ const YouTubeLightbox = ({ isOpen, onClose, videoUrl, title }: YouTubeLightboxPr
                   src={generalOverseer}
                   alt={title || "Video thumbnail"}
                   className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  onLoad={() => setImageLoaded(true)}
+                  onLoad={() = loading="lazy" decoding="async"> setImageLoaded(true)}
                 />
                 
                 {/* Dark overlay */}

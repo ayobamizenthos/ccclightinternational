@@ -141,7 +141,7 @@ const SermonDetail = () => {
                   src={sermon.thumbnail}
                   alt={sermon.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                / loading="lazy" decoding="async">
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
                   {/* Play Button */}
@@ -304,7 +304,7 @@ const SermonDetail = () => {
                             src={related.thumbnail}
                             alt={related.title}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
+                          / loading="lazy" decoding="async">
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                           {/* Play indicator */}
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

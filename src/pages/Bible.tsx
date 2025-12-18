@@ -823,7 +823,7 @@ const Bible = memo(() => {
               src={imoleLogo} 
               alt="CCC Light" 
               className="w-11 h-11 object-contain"
-            />
+            / loading="lazy" decoding="async">
           </motion.button>
           
           {/* Center - Version Selector */}
