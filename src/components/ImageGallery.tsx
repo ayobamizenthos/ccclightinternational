@@ -219,7 +219,7 @@ const ImageGallery = () => {
                     src={image.src}
                     alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                  loading="lazy" decoding="async"/>
                 </div>
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
@@ -326,7 +326,7 @@ const ImageGallery = () => {
                 src={filteredImages[selectedIndex].src}
                 alt={filteredImages[selectedIndex].alt}
                 className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.5)]"
-              />
+              loading="lazy" decoding="async"/>
             </motion.div>
             
             <motion.button
@@ -360,7 +360,7 @@ const ImageGallery = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
+                  <img src={image.src} alt={image.alt} className="w-full h-full object-cover" loading="lazy" decoding="async"/>
                 </motion.button>
               ))}
             </div>
