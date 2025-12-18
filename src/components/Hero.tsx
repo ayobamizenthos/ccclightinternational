@@ -3,8 +3,7 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Play, MapPin, ChevronDown, Sparkles, Globe, X, Church } from "lucide-react";
 import { branches } from "@/data/branches";
 
-// Import hero image as module for Vite optimization
-import imoleExterior from "@/assets/imole-exterior.png";
+// Import hero image variants as modules for Vite optimization
 import akokaExterior from "@/assets/church-exterior-glade.jpg";
 import imoleExterior480Webp from '@/assets/imole-exterior-480.webp';
 import imoleExterior768Webp from '@/assets/imole-exterior-768.webp';
@@ -121,7 +120,7 @@ const Hero = memo(() => {
             sizes="(max-width: 768px) 100vw, 1024px"
           />
           <img
-            src={imoleExterior}
+            src={imoleExterior1024Webp}
             alt="CCC Light International Parish - Headquarters"
             className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500"
             loading="eager"
