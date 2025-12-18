@@ -10,7 +10,10 @@
 
     <!-- Critical: Preload hero image and logo for instant loading -->
     <link rel="preload" as="image" href="/src/assets/imole-logo.png" type="image/png" />
-    <link rel="preload" as="image" href="/src/assets/imole-exterior.png" type="image/png" fetchpriority="high" />
+    <!-- Preload responsive AVIF hero (fallback to WebP/PNG served by <picture>) -->
+    <link rel="preload" as="image" href="/src/assets/imole-exterior-1024.avif" type="image/avif"
+      imagesrcset="/src/assets/imole-exterior-480.avif 480w, /src/assets/imole-exterior-768.avif 768w, /src/assets/imole-exterior-1024.avif 1024w, /src/assets/imole-exterior-1600.avif 1600w"
+      imagesizes="(max-width: 768px) 100vw, 1024px" />
     
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -209,6 +212,32 @@
       @keyframes dotPulse {
         0%, 100% { transform: scale(1); opacity: 0.5; }
         50% { transform: scale(1.3); opacity: 1; }
+      }
+      /* Critical hero CSS to reduce LCP and provide a tiny LQIP before the image loads */
+      .hero-section {
+        min-height: 100svh;
+        position: relative;
+        /* subtle LQIP using a tiny gradient to avoid an extra network request */
+        background: linear-gradient(180deg, rgba(10,22,40,1) 0%, rgba(14,28,52,1) 100%);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Ensure the absolutely positioned picture/img covers the hero and is GPU-accelerated */
+      .hero-section picture,
+      .hero-section img {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        will-change: opacity, transform;
+      }
+
+      /* Reduce repaint cost for overlays */
+      .hero-section > div[style], .hero-section .absolute.inset-0 {
+        transform: translateZ(0);
       }
     </style>
   </head>
