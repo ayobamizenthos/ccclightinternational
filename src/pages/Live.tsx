@@ -137,7 +137,9 @@ const Live = memo(() => {
     if (navigator.share) {
       try {
         await navigator.share({ title: 'CCC Light Live', url: window.location.href });
-      } catch (err) {}
+      } catch (err) {
+        console.warn('Share failed', err);
+      }
     } else {
       await navigator.clipboard.writeText(window.location.href);
       toast({ title: "Link Copied" });

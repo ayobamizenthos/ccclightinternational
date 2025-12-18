@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 export type BibleNavState = {
   tab: 'today' | 'bible' | 'stories' | 'plans' | 'saved';
@@ -11,7 +11,7 @@ export const useBibleNavigation = () => {
   const [history, setHistory] = useState<BibleNavState[]>([{ tab: 'today' }]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const currentState = history[currentIndex] || { tab: 'today' };
+  const currentState = useMemo(() => history[currentIndex] || { tab: 'today' }, [history, currentIndex]);
 
   const navigate = useCallback((newState: BibleNavState) => {
     setHistory(prev => {

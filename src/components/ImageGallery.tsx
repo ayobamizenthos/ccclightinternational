@@ -52,7 +52,7 @@ const ImageGallery = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedIndex]);
+  }, [selectedIndex, navigateNext, navigatePrev]);
 
   useEffect(() => {
     if (!isPlaying || selectedIndex === null) return;

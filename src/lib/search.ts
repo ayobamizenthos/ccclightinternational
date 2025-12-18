@@ -16,8 +16,8 @@ export interface SearchFilters {
   type?: 'blog' | 'news' | 'event';
   category?: string;
   dateRange?: {
-    start: Date;
-    end: Date;
+    start?: Date;
+    end?: Date;
   };
   tags?: string[];
 }

@@ -402,93 +402,62 @@ export const useOfflineManager = () => {
 
     let successCount = 0;
 
+    // Helper to fetch and save a chapter
+    const fetchAndSave = async (chapterNum: number): Promise<boolean> => {
+      const res = await fetchWithRetry(`https://bible-api.com/${encodeURIComponent(bookName)}+${chapterNum}?translation=kjv`);
+      if (!res) return false;
+      try {
+        const data = await res.json();
+        const verses = (data.verses as Array<{ verse: number; text: string }> | undefined)?.map(v => ({ verse: v.verse, text: v.text })) || [];
+        if (verses.length > 0) {
+          bibleStorage.saveChapterOffline(bookName, chapterNum, verses);
+          return true;
+        }
+      } catch (err) {
+        console.warn('Failed to parse chapter response', err);
+      }
+      return false;
+    };
+
+    // First pass: download chapters sequentially
     for (let chapter = 1; chapter <= book.chapters; chapter++) {
       if (cancelRef.current) {
         setDownloadProgress(prev => prev ? { ...prev, status: 'paused' } : null);
         return false;
       }
 
-      // Skip if already downloaded
       if (bibleStorage.isChapterAvailableOffline(bookName, chapter)) {
         successCount++;
         setDownloadProgress(prev => prev ? { ...prev, current: chapter } : null);
         continue;
       }
 
-      const response = await fetchWithRetry(
-        `https://bible-api.com/${encodeURIComponent(bookName)}+${chapter}?translation=kjv`
-      );
+      const ok = await fetchAndSave(chapter);
+      if (!ok) failedChapters.push(chapter);
+      else successCount++;
 
-      if (response) {
-        try {
-          const data = await response.json();
-          const verses = data.verses?.map((v: any) => ({
-            verse: v.verse,
-            text: v.text,
-          })) || [];
-
-          if (verses.length > 0) {
-            bibleStorage.saveChapterOffline(bookName, chapter, verses);
-            successCount++;
-          } else {
-            failedChapters.push(chapter);
-          }
-        } catch {
-          failedChapters.push(chapter);
-        }
-      } else {
-        failedChapters.push(chapter);
-      }
-
-      setDownloadProgress(prev => prev ? { 
-        ...prev, 
-        current: chapter,
-        failedChapters: [...failedChapters],
-      } : null);
-      
-      // Increased delay to prevent rate limiting - 300ms instead of 150ms
-      await new Promise(resolve => setTimeout(resolve, 300));
+      setDownloadProgress(prev => prev ? { ...prev, current: chapter, failedChapters: [...failedChapters] } : null);
+      await new Promise(r => setTimeout(r, 300));
     }
 
-    // Retry failed chapters once more
-    if (failedChapters.length > 0 && !cancelRef.current) {
-      for (const chapter of failedChapters) {
+    // Retry failed chapters once
+    if (!cancelRef.current && failedChapters.length > 0) {
+      // Make a copy because we'll modify the array
+      const toRetry = [...failedChapters];
+      for (const chapter of toRetry) {
         if (cancelRef.current) break;
-        
         await new Promise(r => setTimeout(r, 500));
-        
-        const response = await fetchWithRetry(
-          `https://bible-api.com/${encodeURIComponent(bookName)}+${chapter}?translation=kjv`,
-          2,
-          2000
-        );
-
-        if (response) {
-          try {
-            const data = await response.json();
-            const verses = data.verses?.map((v: any) => ({
-              verse: v.verse,
-              text: v.text,
-            })) || [];
-
-            if (verses.length > 0) {
-              bibleStorage.saveChapterOffline(bookName, chapter, verses);
-              successCount++;
-              // Remove from failed
-              const idx = failedChapters.indexOf(chapter);
-              if (idx > -1) failedChapters.splice(idx, 1);
-            }
-          } catch {}
+        const ok = await fetchAndSave(chapter);
+        if (ok) {
+          successCount++;
+          const idx = failedChapters.indexOf(chapter);
+          if (idx > -1) failedChapters.splice(idx, 1);
         }
       }
     }
 
     const isComplete = successCount === book.chapters;
-    setDownloadProgress(prev => prev ? { 
-      ...prev, 
-      status: isComplete ? 'completed' : 'error',
-      failedChapters,
-    } : null);
+    setDownloadProgress(prev => prev ? { ...prev, status: isComplete ? 'completed' : 'error', failedChapters } : null);
 
     return isComplete;
   }, [bibleStorage]);

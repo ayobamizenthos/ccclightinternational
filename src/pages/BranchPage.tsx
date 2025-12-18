@@ -1,19 +1,19 @@
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   MapPin, Phone, Mail, ExternalLink, ArrowLeft, Calendar, Clock, 
   Users, Globe, Facebook, Instagram, Youtube, Music2, Church, 
   Sparkles, Crown, ChevronRight, Play
 } from "lucide-react";
-import { getBranchBySlug, serviceTimes, branches } from "@/data/branches";
+import { getBranchBySlug, serviceTimes, branches, Branch } from "@/data/branches";
 import { Button } from "@/components/ui/button";
 import imoleLogo from "@/assets/imole-logo.png";
 import imoleExterior from "@/assets/imole-exterior.png";
 import generalOverseer from "@/assets/general-overseer.png";
 
 // Branch Preloader Component
-const BranchPreloader = ({ branch, onComplete }: { branch: any; onComplete: () => void }) => {
+const BranchPreloader = ({ branch, onComplete }: { branch: Branch; onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
   
   useEffect(() => {
@@ -172,7 +172,7 @@ const BranchPage = () => {
     );
   }
 
-  const socialIcons: Record<string, any> = {
+  const socialIcons: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
     facebook: Facebook,
     instagram: Instagram,
     youtube: Youtube,

@@ -192,7 +192,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onResults, placeholder = "
               </label>
               <Select
                 value={filters.type || ''}
-                onValueChange={(value) => setFilters(prev => ({ ...prev, type: value as any || undefined }))}
+                onValueChange={(value) => setFilters(prev => ({ ...prev, type: (value as SearchFilters['type']) || undefined }))}
               >
                 <SelectTrigger 
                   className="bg-white/5 border-white/10 text-white"
@@ -252,9 +252,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onResults, placeholder = "
                   onChange={(e) => setFilters(prev => ({
                     ...prev,
                     dateRange: {
-                      ...prev.dateRange!,
+                      ...(prev.dateRange ?? {}),
                       start: e.target.value ? new Date(e.target.value) : undefined
-                    } as any
+                    }
                   }))}
                 />
                 <input
@@ -264,9 +264,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onResults, placeholder = "
                   onChange={(e) => setFilters(prev => ({
                     ...prev,
                     dateRange: {
-                      ...prev.dateRange!,
+                      ...(prev.dateRange ?? {}),
                       end: e.target.value ? new Date(e.target.value) : undefined
-                    } as any
+                    }
                   }))}
                 />
               </div>

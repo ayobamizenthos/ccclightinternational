@@ -39,8 +39,9 @@ export const trackWebVitals = () => {
   let clsValue = 0;
   new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
-      if (!(entry as any).hadRecentInput) {
-        clsValue += (entry as any).value;
+      const e = entry as PerformanceEntry & { hadRecentInput?: boolean; value?: number };
+      if (!e.hadRecentInput) {
+        clsValue += e.value || 0;
       }
     }
   }).observe({ entryTypes: ['layout-shift'] });
@@ -48,9 +49,10 @@ export const trackWebVitals = () => {
   // FID - First Input Delay
   new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
+      const e = entry as PerformanceEventTiming;
       captureMessage('First Input Delay', 'info', {
-        fid: (entry as any).processingStart - entry.startTime,
-        eventType: (entry as any).name
+        fid: (e.processingStart || 0) - e.startTime,
+        eventType: e.name
       });
     }
   }).observe({ entryTypes: ['first-input'] });
@@ -58,9 +60,9 @@ export const trackWebVitals = () => {
   // LCP - Largest Contentful Paint
   new PerformanceObserver((list) => {
     const entries = list.getEntries();
-    const lastEntry = entries[entries.length - 1];
+    const lastEntry = entries[entries.length - 1] as PerformanceEntry | undefined;
     captureMessage('Largest Contentful Paint', 'info', {
-      lcp: lastEntry.startTime
+      lcp: lastEntry ? lastEntry.startTime : 0
     });
   }).observe({ entryTypes: ['largest-contentful-paint'] });
 
@@ -123,9 +125,10 @@ export const trackNavigationTiming = () => {
 
 // Memory usage monitoring
 export const trackMemoryUsage = () => {
-  if ('memory' in performance) {
+  const perfWithMemory = performance as unknown as { memory?: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number } };
+  if (perfWithMemory.memory) {
     setInterval(() => {
-      const memory = (performance as any).memory;
+      const memory = perfWithMemory.memory!;
       const usedPercent = (memory.usedJSHeapSize / memory.totalJSHeapSize) * 100;
 
       if (usedPercent > 80) {

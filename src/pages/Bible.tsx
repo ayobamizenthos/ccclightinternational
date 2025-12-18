@@ -458,7 +458,7 @@ const Bible = memo(() => {
       cacheSermons();
       localStorage.setItem('ccc-devotionals-cached', 'true');
     }
-  }, []); // Empty deps - run once on mount
+  }, [cacheDevotionals, cacheSermons]); // Run once on mount; include stable hooks
 
   // Handle back navigation within Bible - stays within Bible unless at root
   const handleBackNavigation = useCallback(() => {
@@ -1359,10 +1359,10 @@ const Bible = memo(() => {
                 { id: 'all', label: 'All', count: 30 },
                 { id: 'old', label: 'Old Testament', count: 15 },
                 { id: 'new', label: 'New Testament', count: 15 },
-              ].map(filter => (
+              ].map((filter: { id: 'all' | 'old' | 'new'; label: string; count: number }) => (
                 <motion.button
                   key={filter.id}
-                  onClick={() => setStoriesFilter(filter.id as any)}
+                  onClick={() => setStoriesFilter(filter.id)}
                   className={`px-4 py-2 rounded-full text-sm font-medium ${
                     storiesFilter === filter.id
                       ? 'bg-gray-900 text-white'

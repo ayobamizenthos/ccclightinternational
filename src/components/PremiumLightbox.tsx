@@ -69,7 +69,7 @@ const PremiumLightbox = memo(({
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, hasNext, hasPrev, currentIndex]);
+  }, [isOpen, hasNext, hasPrev, currentIndex, navigateNext, navigatePrev, handleZoomIn, handleZoomOut, onClose]);
 
   const navigateNext = useCallback(() => {
     if (hasNext) {

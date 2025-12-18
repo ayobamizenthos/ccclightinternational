@@ -69,7 +69,7 @@ const Testimonials = memo(() => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   }, []);
 
-  const handleDragEnd = useCallback((event: any, info: PanInfo) => {
+  const handleDragEnd = useCallback((event: unknown, info: PanInfo) => {
     const threshold = 50;
     if (info.offset.x < -threshold) {
       goToNext();

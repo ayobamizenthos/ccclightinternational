@@ -31,13 +31,14 @@ const DailyVerse = memo(() => {
   useEffect(() => {
     const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
     const verseIndex = dayOfYear % dailyVerses.length;
-    setCurrentVerse(dailyVerses[verseIndex]);
+    const selected = dailyVerses[verseIndex];
+    setCurrentVerse(selected);
     
-    // Check localStorage for liked/saved state
+    // Check localStorage for liked/saved state using the selected verse
     const saved = localStorage.getItem('dailyVerseSaved');
     const liked = localStorage.getItem('dailyVerseLiked');
-    if (saved === currentVerse.reference) setIsSaved(true);
-    if (liked === currentVerse.reference) setIsLiked(true);
+    if (saved === selected.reference) setIsSaved(true);
+    if (liked === selected.reference) setIsLiked(true);
   }, []);
 
   const getTimeGreeting = () => {

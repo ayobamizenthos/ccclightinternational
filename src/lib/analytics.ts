@@ -11,10 +11,10 @@ export const initializeAnalytics = async () => {
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
-      window.dataLayer.push(args);
+    function gtag(...args: unknown[]) {
+      window.dataLayer.push(args as unknown);
     }
-    window.gtag = gtag as any;
+    window.gtag = gtag as unknown as Window['gtag'];
     gtag('js', new Date());
     gtag('config', GA_TRACKING_ID, {
       page_title: document.title,
@@ -23,9 +23,9 @@ export const initializeAnalytics = async () => {
   }
 };
 
-export const logEvent = (eventName: string, parameters?: Record<string, any>) => {
+export const logEvent = (eventName: string, parameters?: Record<string, unknown>) => {
   if (window.gtag) {
-    window.gtag('event', eventName, parameters);
+    window.gtag('event', eventName, parameters as unknown);
   }
 };
 
@@ -39,7 +39,7 @@ export const trackPageView = (pagePath: string) => {
   }
 };
 
-export const trackCustomEvent = (eventName: string, parameters?: Record<string, any>) => {
+export const trackCustomEvent = (eventName: string, parameters?: Record<string, unknown>) => {
   logEvent(eventName, parameters);
 };
 
@@ -76,7 +76,7 @@ export const trackFeedbackSubmit = (type: string) => {
   trackCustomEvent('feedback_submit', { feedback_type: type });
 };
 
-export const trackAdminAction = (action: string, details?: Record<string, any>) => {
+export const trackAdminAction = (action: string, details?: Record<string, unknown>) => {
   trackCustomEvent('admin_action', { action, ...details });
 };
 
@@ -100,7 +100,7 @@ export const trackTimeOnPage = (seconds: number, pagePath: string) => {
 // Declare gtag and dataLayer on window
 declare global {
   interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void;
-    dataLayer: any[];
+    gtag: (...args: unknown[]) => void;
+    dataLayer: unknown[];
   }
 }

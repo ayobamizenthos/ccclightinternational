@@ -39,7 +39,8 @@ const Install = () => {
     if (userAgent.includes('android')) setActivePlatform('android');
 
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-    const isInWebAppiOS = (window.navigator as any).standalone === true;
+    const nav = window.navigator as Navigator & { standalone?: boolean };
+    const isInWebAppiOS = nav.standalone === true;
     if (isStandalone || isInWebAppiOS) setIsInstalled(true);
 
     const handleBeforeInstall = (e: Event) => {

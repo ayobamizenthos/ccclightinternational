@@ -42,7 +42,7 @@ const BibleOfflineDownloads = ({ isOpen, onClose, onNavigateToBook }: BibleOffli
         localStorage.setItem('ccc-content-cached', 'true');
       }
     }
-  }, [isOpen]);
+  }, [isOpen, cacheDevotionals, cacheSermons]);
 
   const handleDownload = async (bookName: string) => {
     if (!isOnline) {

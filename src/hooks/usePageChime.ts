@@ -4,7 +4,10 @@ import { useLocation } from 'react-router-dom';
 // Play a gentle celestial chime when navigating to a new page
 const playChime = () => {
   try {
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const win = window as unknown as { AudioContext?: typeof AudioContext; webkitAudioContext?: typeof AudioContext };
+    const Ctor = win.AudioContext || win.webkitAudioContext;
+    if (!Ctor) return;
+    const audioContext = new Ctor();
     
     // Create multiple oscillators for a bell-like chime
     const frequencies = [523.25, 659.25, 783.99]; // C5, E5, G5 - Major chord
@@ -32,7 +35,7 @@ const playChime = () => {
       oscillator.stop(endTime);
     });
   } catch (e) {
-    // Audio not supported, fail silently
+    console.warn('Page chime audio failed', e);
   }
 };
 

@@ -89,7 +89,7 @@ export const fetchVerses = async (book: string, chapter: number): Promise<BibleV
     const data = await response.json();
     
     if (data.verses && Array.isArray(data.verses)) {
-      const verses: BibleVerse[] = data.verses.map((v: any) => ({
+      const verses: BibleVerse[] = (data.verses as Array<{ verse: number; text: string }>).map((v) => ({
         verse: v.verse,
         text: v.text.trim()
       }));
@@ -150,7 +150,7 @@ export const searchBible = async (query: string): Promise<{ reference: string; t
     if (response.ok) {
       const data = await response.json();
       if (data.verses && data.verses.length > 0) {
-        data.verses.forEach((v: any) => {
+        data.verses.forEach((v: { book_name: string; chapter: number; verse: number; text: string }) => {
           results.push({
             reference: `${v.book_name} ${v.chapter}:${v.verse}`,
             text: v.text.trim(),
