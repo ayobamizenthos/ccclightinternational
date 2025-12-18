@@ -144,7 +144,7 @@ const FeaturedVideoSpotlight = () => {
                     src={generalOverseerImage}
                     alt="Sup. Evang. FA Alebiosu - General Overseer"
                     className="w-full h-full object-cover"
-                  />
+                  loading="lazy" decoding="async"/>
 
                   {/* Gradient overlay */}
                   <div

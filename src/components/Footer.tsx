@@ -96,7 +96,7 @@ const Footer = memo(() => {
                 src={imoleLogo} 
                 alt="CCC Light International Parish" 
                 className="h-16 md:h-20 w-auto"
-              />
+              loading="lazy" decoding="async"/>
             </motion.div>
             
             <motion.h3 

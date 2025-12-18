@@ -231,7 +231,7 @@ const ChoirMediaTeam = () => {
                           src={choirAlbumCover} 
                           alt="Lati Ona Jinjin - CCC Light International Choir" 
                           className="w-full h-full object-cover" 
-                        />
+                        loading="lazy" decoding="async"/>
                         <motion.a
                           href="https://www.youtube.com/watch?v=dJYeiEP2Zmo"
                           target="_blank"
@@ -283,7 +283,7 @@ const ChoirMediaTeam = () => {
                               whileHover={{ scale: 1.03, background: 'rgba(212,175,55,0.15)' }}
                               whileTap={{ scale: 0.98 }}
                             >
-                              <img src={platform.icon} alt={platform.name} className="w-4 h-4" />
+                              <img src={platform.icon} alt={platform.name} className="w-4 h-4" loading="lazy" decoding="async"/>
                               <span className="text-white/70 text-[10px]">{platform.name}</span>
                             </motion.a>
                           ))}
@@ -318,7 +318,7 @@ const ChoirMediaTeam = () => {
                             src={video.thumbnail} 
                             alt={video.title}
                             className="w-full h-full object-cover"
-                          />
+                          loading="lazy" decoding="async"/>
                           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                             <motion.div
                               className="w-10 h-10 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-sm"
@@ -363,7 +363,7 @@ const ChoirMediaTeam = () => {
                           src={image.src} 
                           alt={image.alt}
                           className="w-full h-full object-cover"
-                        />
+                        loading="lazy" decoding="async"/>
                       </motion.div>
                     ))}
                   </div>
