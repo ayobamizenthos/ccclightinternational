@@ -4,7 +4,7 @@ import { MapPin, Mail, ArrowRight, ExternalLink, Sparkles, Navigation, Phone, St
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { branches } from "@/data/branches";
-import imoleExterior from "@/assets/imole-exterior.png";
+import imoleExterior from '@/assets/imole-exterior-1024.webp';
 
 const NextSteps = () => {
   const [isOpen, setIsOpen] = useState(false);

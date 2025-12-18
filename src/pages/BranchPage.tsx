@@ -8,9 +8,9 @@ import {
 } from "lucide-react";
 import { getBranchBySlug, serviceTimes, branches, Branch } from "@/data/branches";
 import { Button } from "@/components/ui/button";
-import imoleLogo from "@/assets/imole-logo.png";
-import imoleExterior from "@/assets/imole-exterior.png";
-import generalOverseer from "@/assets/general-overseer.png";
+import imoleLogo from "@/assets/ccc-logo.png";
+import imoleExterior1024Webp from "@/assets/imole-exterior-1024.webp";
+import generalOverseer1024Webp from "@/assets/general-overseer-1024.webp";
 
 // Branch Preloader Component
 const BranchPreloader = ({ branch, onComplete }: { branch: Branch; onComplete: () => void }) => {
@@ -198,7 +198,7 @@ const BranchPage = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img 
-              src={imoleExterior} 
+              src={imoleExterior1024Webp} 
               alt={branch.name}
               className="w-full h-full object-cover"
             loading="lazy" decoding="async"/>
@@ -456,9 +456,9 @@ const BranchPage = () => {
                 >
                   {/* General Overseer Image for HQ, logo for others */}
                   <div className="absolute inset-0">
-                    {branch.isHeadquarters ? (
+                      {branch.isHeadquarters ? (
                       <img 
-                        src={generalOverseer} 
+                        src={generalOverseer1024Webp} 
                         alt={branch.shepherd.name}
                         className="w-full h-full object-cover object-top"
                       loading="lazy" decoding="async"/>

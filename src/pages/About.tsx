@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import BackButton from "@/components/BackButton";
 import { branches, Branch } from "@/data/branches";
-import generalOverseer from "@/assets/general-overseer.png";
-import imoleExterior from "@/assets/imole-exterior.png";
+import generalOverseer1024Webp from "@/assets/general-overseer-1024.webp";
+import imoleExterior1024Webp from "@/assets/imole-exterior-1024.webp";
 
 // Branch accent colors
 const branchAccents = [
@@ -92,7 +92,7 @@ const BranchModal = ({ branch, onClose, accentIndex = 0 }: { branch: Branch | nu
           }}
         >
           <img 
-            src={imoleExterior} 
+            src={imoleExterior1024Webp} 
             alt={branch.name}
             className="w-full h-full object-cover opacity-60"
           loading="lazy" decoding="async"/>
@@ -310,7 +310,7 @@ const About = () => {
         <section className="relative py-12 md:py-20 overflow-hidden">
           <div className="absolute inset-0">
             <img 
-              src={imoleExterior} 
+              src={imoleExterior1024Webp} 
               alt="CCC Light Parish" 
               className="w-full h-full object-cover opacity-20"
             loading="lazy" decoding="async"/>
@@ -451,7 +451,7 @@ const About = () => {
                   }}
                 >
                   <img 
-                    src={generalOverseer} 
+                    src={generalOverseer1024Webp} 
                     alt="General Overseer Sup. Evang. FA Alebiosu"
                     className="w-full h-full object-cover"
                   loading="lazy" decoding="async"/>

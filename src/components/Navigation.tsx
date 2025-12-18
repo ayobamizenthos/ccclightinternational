@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import useActiveSection from "@/hooks/useActiveSection";
 import useHapticFeedback from "@/hooks/useHapticFeedback";
-import imoleLogo from "@/assets/imole-logo.png";
+import imoleLogo from "@/assets/ccc-logo.png";
 import BranchSelector from "./BranchSelector";
 import LiveServiceIndicator from "./LiveServiceIndicator";
 

@@ -23,7 +23,7 @@ import BibleStoryIcon from '@/components/BibleStoryIcon';
 import AudioVisualizer from '@/components/LazyAudioVisualizer';
 import BibleOfflineDownloads from '@/components/BibleOfflineDownloads';
 import { useOfflineManager } from '@/hooks/useOfflineManager';
-import imoleLogo from '@/assets/imole-logo.png';
+import imoleLogo from '@/assets/ccc-logo.png';
 
 interface BibleVerse {
   verse: number;

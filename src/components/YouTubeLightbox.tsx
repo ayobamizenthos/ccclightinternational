@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
-import generalOverseer from "@/assets/general-overseer.png";
+import generalOverseer from '@/assets/general-overseer-1024.webp';
 import generalOverseer480Webp from '@/assets/general-overseer-480.webp';
 import generalOverseer768Webp from '@/assets/general-overseer-768.webp';
 import generalOverseer1024Webp from '@/assets/general-overseer-1024.webp';

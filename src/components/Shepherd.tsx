@@ -1,7 +1,7 @@
 import { Quote, Sparkles, Crown, Star, Church, Users, BookOpen } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import generalOverseer from "@/assets/general-overseer.png";
+import generalOverseer from '@/assets/general-overseer-1024.webp';
 
 const Shepherd = () => {
   const sectionRef = useRef<HTMLElement>(null);

@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa6";
 import { memo, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { branches, serviceTimes } from "@/data/branches";
-import imoleLogo from "@/assets/imole-logo.png";
+import imoleLogo from "@/assets/ccc-logo.png";
 
 const Footer = memo(() => {
   const footerRef = useRef<HTMLElement>(null);

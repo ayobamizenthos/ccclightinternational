@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Play, Pause, Maximize2, Images } from "lucide-react";
-import imoleExterior from "@/assets/imole-exterior.png";
+import imoleExterior from '@/assets/imole-exterior-1024.webp';
 import gladeInterior from "@/assets/church-interior-glade.jpg";
 import imoleExterior480Webp from '@/assets/imole-exterior-480.webp';
 import imoleExterior768Webp from '@/assets/imole-exterior-768.webp';

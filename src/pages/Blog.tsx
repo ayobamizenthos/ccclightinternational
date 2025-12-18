@@ -10,7 +10,7 @@ import BackButton from '@/components/BackButton';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import { motion } from 'framer-motion';
-import generalOverseerImage from '@/assets/general-overseer.png';
+import generalOverseerImage from '@/assets/general-overseer-1024.webp';
 
 interface BlogPost {
   id: string;
