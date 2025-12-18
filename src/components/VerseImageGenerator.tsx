@@ -114,7 +114,7 @@ export const VerseImageGenerator = ({ isOpen, onClose, verseText, verseReference
 
     // Center text vertically
     const totalTextHeight = lines.length * lineHeight;
-    let startY = (canvas.height - totalTextHeight) / 2 - lineHeight * 0.5;
+    const startY = (canvas.height - totalTextHeight) / 2 - lineHeight * 0.5;
 
     // Draw quotation mark
     ctx.font = `${quoteFontSize}px ${selectedFont.family}`;

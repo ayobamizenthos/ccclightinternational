@@ -1,13 +1,19 @@
 import { memo } from 'react';
-import { 
-  Globe, Apple, Ship, Building2, Star, Heart, Sparkles, 
+import {
+  Globe, Apple, Ship, Building2, Star, Heart, Sparkles,
   Flame, Waves, ScrollText, Sword, Crown, Fish, Users,
   Zap, Baby, Bird, Mountain, Wheat, Home, Sailboat,
   HandHeart, Wine, Moon, Cross, Sunrise, Map, Wind, Lightbulb
 } from 'lucide-react';
 
+interface IconProps {
+  className?: string;
+  style?: React.CSSProperties;
+  strokeWidth?: string | number;
+}
+
 // Story icon mapping - replaces emojis with elegant icons
-export const storyIconMap: Record<number, { icon: React.ComponentType<any>; color: string; bg: string }> = {
+export const storyIconMap: Record<number, { icon: React.ComponentType<IconProps>; color: string; bg: string }> = {
   // Old Testament
   1: { icon: Globe, color: '#059669', bg: '#ECFDF5' }, // Creation
   2: { icon: Apple, color: '#DC2626', bg: '#FEF2F2' }, // Fall of Man

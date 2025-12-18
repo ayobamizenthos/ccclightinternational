@@ -103,7 +103,7 @@ const PremiumLightbox = memo(({
     trigger('light');
   }, [zoom, trigger]);
 
-  const handleDragEnd = useCallback((_: any, info: PanInfo) => {
+  const handleDragEnd = useCallback((_: Event, info: PanInfo) => {
     const threshold = 100;
     const velocity = info.velocity.x;
     const offset = info.offset.x;

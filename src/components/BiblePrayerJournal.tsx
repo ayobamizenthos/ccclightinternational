@@ -169,7 +169,7 @@ const BiblePrayerJournal: React.FC = () => {
                     {categories.map((cat) => (
                       <button
                         key={cat.id}
-                        onClick={() => setNewPrayer({ ...newPrayer, category: cat.id as any })}
+                        onClick={() => setNewPrayer({ ...newPrayer, category: cat.id as PrayerEntry['category'] })}
                         className={`px-4 py-2 rounded-full text-sm flex items-center gap-2 transition-colors ${
                           newPrayer.category === cat.id ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-600'
                         }`}
