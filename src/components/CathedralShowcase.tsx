@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "./ScrollReveal";
-import imoleExterior from "@/assets/imole-exterior.png";
+import imoleExterior from '@/assets/imole-exterior-1024.webp';
 import gladeInterior from "@/assets/church-interior-glade.jpg";
 
 const CathedralShowcase = () => {

@@ -6,7 +6,7 @@ import BackButton from "@/components/BackButton";
 import PageHeader from "@/components/PageHeader";
 import SEO from "@/components/SEO";
 import PremiumLightbox from "@/components/PremiumLightbox";
-import YouTubeLightbox from "@/components/YouTubeLightbox";
+import YouTubeLightbox from "@/components/LazyYouTubeLightbox";
 import { Play, ExternalLink, Music2, Video, Mic2, Headphones, Camera, Film, Sparkles, Youtube } from "lucide-react";
 
 // Import streaming platform icons
@@ -17,11 +17,11 @@ import youtubeIcon from '@/assets/youtube-music-icon.png';
 import choirAlbumCover from '@/assets/choir-album-cover.webp';
 
 // Import choir performance gallery images
-import choirPerformance1 from '@/assets/choir-performance-1.png';
+import choirPerformance1 from '@/assets/choir-performance-3-1024.webp';
 import choirPerformance2 from '@/assets/choir-performance-2.jpg';
-import choirPerformance3 from '@/assets/choir-performance-3.png';
-import choirPerformance4 from '@/assets/choir-performance-4.png';
-import luliConcertPerformance from '@/assets/luli-concert-performance.png';
+import choirPerformance3 from '@/assets/choir-performance-3-1024.webp';
+import choirPerformance4 from '@/assets/choir-performance-3-1024.webp';
+import luliConcertPerformance from '@/assets/choir-performance-3-1024.webp';
 
 const galleryImages = [
   { src: choirPerformance1, alt: "CCC Light International Choir - Celestial Worship", title: "Celestial Worship", youtubeUrl: "https://www.youtube.com/@CCCLIGHTINTERNATIONAL" },

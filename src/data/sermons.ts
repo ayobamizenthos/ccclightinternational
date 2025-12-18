@@ -1,4 +1,4 @@
-import generalOverseer from '@/assets/general-overseer.png';
+import generalOverseer from '@/assets/general-overseer-1024.webp';
 
 export interface Sermon {
   id: string;

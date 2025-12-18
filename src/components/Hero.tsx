@@ -3,9 +3,16 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Play, MapPin, ChevronDown, Sparkles, Globe, X, Church } from "lucide-react";
 import { branches } from "@/data/branches";
 
-// Import hero image as module for Vite optimization
-import imoleExterior from "@/assets/imole-exterior.png";
+// Import hero image variants as modules for Vite optimization
 import akokaExterior from "@/assets/church-exterior-glade.jpg";
+import imoleExterior480Webp from '@/assets/imole-exterior-480.webp';
+import imoleExterior768Webp from '@/assets/imole-exterior-768.webp';
+import imoleExterior1024Webp from '@/assets/imole-exterior-1024.webp';
+import imoleExterior1600Webp from '@/assets/imole-exterior-1600.webp';
+import imoleExterior480Avif from '@/assets/imole-exterior-480.avif';
+import imoleExterior768Avif from '@/assets/imole-exterior-768.avif';
+import imoleExterior1024Avif from '@/assets/imole-exterior-1024.avif';
+import imoleExterior1600Avif from '@/assets/imole-exterior-1600.avif';
 
 // Service schedule for live detection
 const SERVICE_SCHEDULE = [
@@ -89,7 +96,7 @@ const Hero = memo(() => {
   return (
     <motion.section 
       ref={heroRef} 
-      className="relative w-full min-h-[100svh] overflow-hidden flex items-center justify-center"
+      className="hero-section relative w-full min-h-[100svh] overflow-hidden flex items-center justify-center"
       animate={shakeControls}
     >
       {/* Background - No parallax for performance */}
@@ -100,17 +107,29 @@ const Hero = memo(() => {
           style={{ opacity: heroImageLoaded ? 0 : 1, transition: 'opacity 0.5s ease-out' }}
         />
         
-        {/* Hero image */}
-        <img 
-          src={imoleExterior} 
-          alt="CCC Light International Parish - Headquarters" 
-          className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500"
-          loading="eager"
-          decoding="sync"
-          fetchPriority="high"
-          style={{ opacity: heroImageLoaded ? 1 : 0 }}
-          onLoad={() => setHeroImageLoaded(true)}
-        />
+        {/* Hero image (responsive AVIF/WebP with PNG fallback) */}
+        <picture>
+          <source
+            type="image/avif"
+            srcSet={`${imoleExterior480Avif} 480w, ${imoleExterior768Avif} 768w, ${imoleExterior1024Avif} 1024w, ${imoleExterior1600Avif} 1600w`}
+            sizes="(max-width: 768px) 100vw, 1024px"
+          />
+          <source
+            type="image/webp"
+            srcSet={`${imoleExterior480Webp} 480w, ${imoleExterior768Webp} 768w, ${imoleExterior1024Webp} 1024w, ${imoleExterior1600Webp} 1600w`}
+            sizes="(max-width: 768px) 100vw, 1024px"
+          />
+          <img
+            src={imoleExterior1024Webp}
+            alt="CCC Light International Parish - Headquarters"
+            className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500"
+            loading="eager"
+            decoding="sync"
+            fetchPriority="high"
+            style={{ opacity: heroImageLoaded ? 1 : 0 }}
+            onLoad={() => setHeroImageLoaded(true)}
+          />
+        </picture>
         
         {/* Overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />

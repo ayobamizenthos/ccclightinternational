@@ -1,0 +1,32 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [ perf/optimize-next ]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Lighthouse audit (live site)
+        run: |
+          npx -y lighthouse https://ccclightinternational.vercel.app --output html --output-path ./lighthouse-report.html --only-categories=performance,accessibility,best-practices,seo --chrome-flags='--no-sandbox --headless'
+
+      - name: Upload Lighthouse report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: ./lighthouse-report.html

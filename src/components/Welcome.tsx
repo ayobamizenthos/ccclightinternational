@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, memo } from "react";
 import AnimatedCounter from "./AnimatedCounter";
-import imoleExterior from "@/assets/imole-exterior.png";
+import imoleExterior from '@/assets/imole-exterior-1024.webp';
 
 // Optimized inline SVG icons
 const TargetIcon = memo(() => (

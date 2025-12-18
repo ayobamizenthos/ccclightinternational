@@ -3,7 +3,7 @@ import { memo, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { serviceTimes } from "@/data/branches";
-import imoleExterior from "@/assets/imole-exterior.png";
+import imoleExterior from '@/assets/imole-exterior-1024.webp';
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSwipeNavigation } from "@/hooks/useSwipeNavigation";
 

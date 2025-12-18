@@ -3,8 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Play, Pause, Maximize2, Images } from "lucide-react";
-import imoleExterior from "@/assets/imole-exterior.png";
+import imoleExterior from '@/assets/imole-exterior-1024.webp';
 import gladeInterior from "@/assets/church-interior-glade.jpg";
+import imoleExterior480Webp from '@/assets/imole-exterior-480.webp';
+import imoleExterior768Webp from '@/assets/imole-exterior-768.webp';
+import imoleExterior1024Webp from '@/assets/imole-exterior-1024.webp';
+import imoleExterior1600Webp from '@/assets/imole-exterior-1600.webp';
+import LazyImage from './LazyImage';
 
 interface GalleryImage {
   src: string;
@@ -215,11 +220,17 @@ const ImageGallery = () => {
             >
               <div className="relative overflow-hidden rounded-2xl bg-white/90 backdrop-blur-xl border border-[hsl(43,90%,52%,0.15)] shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_60px_rgba(210,172,71,0.2)] transition-all duration-700">
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img
+                  <LazyImage
                     src={image.src}
                     alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy" decoding="async"/>
+                    webpSrcSet={
+                      image.src === imoleExterior
+                        ? `${imoleExterior480Webp} 480w, ${imoleExterior768Webp} 768w, ${imoleExterior1024Webp} 1024w, ${imoleExterior1600Webp} 1600w`
+                        : undefined
+                    }
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
@@ -322,11 +333,12 @@ const ImageGallery = () => {
               exit={{ scale: 0.8, opacity: 0 }}
               key={selectedIndex}
             >
-              <img
+              <LazyImage
                 src={filteredImages[selectedIndex].src}
                 alt={filteredImages[selectedIndex].alt}
                 className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.5)]"
-              loading="lazy" decoding="async"/>
+                priority={true}
+              />
             </motion.div>
             
             <motion.button
