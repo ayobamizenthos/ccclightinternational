@@ -8,16 +8,32 @@ import { initializeWebVitals } from "./lib/webVitals";
 import { registerSW } from 'virtual:pwa-register';
 
 // Initialize Sentry first
-initializeSentry();
+try {
+  initializeSentry();
+} catch (e) {
+  console.error('Sentry init error:', e);
+}
 
 // Initialize performance monitoring
-initializePerformanceMonitoring();
+try {
+  initializePerformanceMonitoring();
+} catch (e) {
+  console.error('Performance monitoring error:', e);
+}
 
 // Initialize analytics
-initializeAnalytics();
+try {
+  initializeAnalytics();
+} catch (e) {
+  console.error('Analytics init error:', e);
+}
 
 // Initialize Web Vitals tracking
-initializeWebVitals();
+try {
+  initializeWebVitals();
+} catch (e) {
+  console.error('Web Vitals init error:', e);
+}
 
 // HTTPS enforcement
 if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
