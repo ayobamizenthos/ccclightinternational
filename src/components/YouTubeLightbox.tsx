@@ -175,11 +175,13 @@ const YouTubeLightbox = ({ isOpen, onClose, videoUrl, title }: YouTubeLightboxPr
                 </AnimatePresence>
 
                 {/* Sermon thumbnail - General Overseer image */}
-                <img 
+                <img
                   src={generalOverseer}
                   alt={title || "Video thumbnail"}
                   className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  onLoad={() = loading="lazy" decoding="async"> setImageLoaded(true)}
+                  onLoad={() => setImageLoaded(true)}
+                  loading="lazy"
+                  decoding="async"
                 />
                 
                 {/* Dark overlay */}
