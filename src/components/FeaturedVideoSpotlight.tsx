@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Play, Calendar, Sparkles, Clock, Eye, ExternalLink } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import YouTubeLightbox from "./YouTubeLightbox";
+import YouTubeLightbox from "./LazyYouTubeLightbox";
 import generalOverseerImage from "@/assets/general-overseer.png";
 
 const FeaturedVideoSpotlight = () => {

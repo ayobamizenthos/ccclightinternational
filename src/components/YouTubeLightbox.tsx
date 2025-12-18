@@ -2,6 +2,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 import generalOverseer from "@/assets/general-overseer.png";
+import generalOverseer480Webp from '@/assets/general-overseer-480.webp';
+import generalOverseer768Webp from '@/assets/general-overseer-768.webp';
+import generalOverseer1024Webp from '@/assets/general-overseer-1024.webp';
+import generalOverseer1600Webp from '@/assets/general-overseer-1600.webp';
+import generalOverseer480Avif from '@/assets/general-overseer-480.avif';
+import generalOverseer768Avif from '@/assets/general-overseer-768.avif';
+import generalOverseer1024Avif from '@/assets/general-overseer-1024.avif';
+import generalOverseer1600Avif from '@/assets/general-overseer-1600.avif';
 
 interface YouTubeLightboxProps {
   isOpen: boolean;
@@ -175,14 +183,26 @@ const YouTubeLightbox = ({ isOpen, onClose, videoUrl, title }: YouTubeLightboxPr
                 </AnimatePresence>
 
                 {/* Sermon thumbnail - General Overseer image */}
-                <img
-                  src={generalOverseer}
-                  alt={title || "Video thumbnail"}
-                  className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  onLoad={() => setImageLoaded(true)}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet={`${generalOverseer480Avif} 480w, ${generalOverseer768Avif} 768w, ${generalOverseer1024Avif} 1024w, ${generalOverseer1600Avif} 1600w`}
+                    sizes="(max-width: 768px) 100vw, 1024px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet={`${generalOverseer480Webp} 480w, ${generalOverseer768Webp} 768w, ${generalOverseer1024Webp} 1024w, ${generalOverseer1600Webp} 1600w`}
+                    sizes="(max-width: 768px) 100vw, 1024px"
+                  />
+                  <img
+                    src={generalOverseer}
+                    alt={title || "Video thumbnail"}
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                    onLoad={() => setImageLoaded(true)}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />

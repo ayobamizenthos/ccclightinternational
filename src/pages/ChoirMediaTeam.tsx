@@ -6,7 +6,7 @@ import BackButton from "@/components/BackButton";
 import PageHeader from "@/components/PageHeader";
 import SEO from "@/components/SEO";
 import PremiumLightbox from "@/components/PremiumLightbox";
-import YouTubeLightbox from "@/components/YouTubeLightbox";
+import YouTubeLightbox from "@/components/LazyYouTubeLightbox";
 import { Play, ExternalLink, Music2, Video, Mic2, Headphones, Camera, Film, Sparkles, Youtube } from "lucide-react";
 
 // Import streaming platform icons
