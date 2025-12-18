@@ -95,7 +95,7 @@ const BranchModal = ({ branch, onClose, accentIndex = 0 }: { branch: Branch | nu
             src={imoleExterior} 
             alt={branch.name}
             className="w-full h-full object-cover opacity-60"
-          / loading="lazy" decoding="async">
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-transparent" />
           <div className="absolute bottom-3 left-4 right-4">
             {branch.isHeadquarters && (
@@ -313,7 +313,7 @@ const About = () => {
               src={imoleExterior} 
               alt="CCC Light Parish" 
               className="w-full h-full object-cover opacity-20"
-            / loading="lazy" decoding="async">
+            />
             <div 
               className="absolute inset-0"
               style={{
@@ -454,7 +454,7 @@ const About = () => {
                     src={generalOverseer} 
                     alt="General Overseer Sup. Evang. FA Alebiosu"
                     className="w-full h-full object-cover"
-                  / loading="lazy" decoding="async">
+                  />
                 </motion.div>
                 
                 <div className="text-center">

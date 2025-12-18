@@ -171,7 +171,7 @@ const Navigation = memo(() => {
                         ? "drop-shadow(0 2px 6px rgba(14,165,233,0.2))"
                         : "drop-shadow(0 2px 8px rgba(0,0,0,0.3))",
                     }}
-                  / loading="lazy" decoding="async">
+                  />
                 </motion.div>
               </Link>
 

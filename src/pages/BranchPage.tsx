@@ -100,7 +100,7 @@ const BranchPreloader = ({ branch, onComplete }: { branch: Branch; onComplete: (
             style={{
               filter: 'drop-shadow(0 20px 40px rgba(14,165,233,0.4))',
             }}
-          / loading="lazy" decoding="async">
+          />
         </motion.div>
         
         {/* Branch Name */}
@@ -201,7 +201,7 @@ const BranchPage = () => {
               src={imoleExterior} 
               alt={branch.name}
               className="w-full h-full object-cover"
-            / loading="lazy" decoding="async">
+            />
             <div 
               className="absolute inset-0"
               style={{
@@ -246,7 +246,7 @@ const BranchPage = () => {
                 src={imoleLogo} 
                 alt="CCC Light Logo" 
                 className="w-12 h-12 object-contain"
-              / loading="lazy" decoding="async">
+              />
             </div>
           </motion.nav>
           
@@ -461,7 +461,7 @@ const BranchPage = () => {
                         src={generalOverseer} 
                         alt={branch.shepherd.name}
                         className="w-full h-full object-cover object-top"
-                      / loading="lazy" decoding="async">
+                      />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center p-12">
                         <motion.img 
@@ -610,7 +610,7 @@ const BranchPage = () => {
                       whileHover={{ y: -5, boxShadow: '0 20px 50px rgba(14,165,233,0.1)' }}
                     >
                       <div className="flex items-center gap-4 mb-4">
-                        <img src={imoleLogo} alt="" className="w-12 h-12 object-contain" / loading="lazy" decoding="async">
+                        <img src={imoleLogo} alt="" className="w-12 h-12 object-contain" />
                         <div>
                           <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">
                             {otherBranch.shortName}
@@ -636,7 +636,7 @@ const BranchPage = () => {
           style={{ background: 'hsl(var(--muted)/0.5)' }}
         >
           <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
-            <img src={imoleLogo} alt="CCC Light" className="w-16 h-16 mx-auto mb-4 object-contain" / loading="lazy" decoding="async">
+            <img src={imoleLogo} alt="CCC Light" className="w-16 h-16 mx-auto mb-4 object-contain" />
             <p className="text-muted-foreground text-sm">
               © {new Date().getFullYear()} CCC Light International Parish. All rights reserved.
             </p>

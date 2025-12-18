@@ -423,7 +423,7 @@ const ChoirSection = () => {
                           boxShadow: '0 4px 15px rgba(0,206,209,0.3)',
                         }}
                       >
-                        <img src={boomplayIcon} alt="Boomplay" className="w-5 h-5 object-contain" / loading="lazy" decoding="async">
+                        <img src={boomplayIcon} alt="Boomplay" className="w-5 h-5 object-contain" />
                       </div>
                       <div className="relative z-10 min-w-0">
                         <span 
